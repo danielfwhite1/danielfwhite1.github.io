@@ -2,7 +2,7 @@
 
 [![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-0a192f?style=flat&logo=github)](https://danielfwhite1.github.io/)
 
-Personal portfolio website built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies, just clean code. Inspired by [Brittany Chiang's v4 design](https://brittanychiang.com/).
+Personal portfolio website built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies, just clean code.
 
 🔗 **Live Site:** [danielfwhite1.github.io](https://danielfwhite1.github.io/)
 

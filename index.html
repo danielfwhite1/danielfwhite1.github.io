@@ -1,55 +1,1134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link href="styles.css" rel="stylesheet">
-    <title>Daniel White Home</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daniel White · Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <style>
+      :root {
+        --bg: #0a0e1a;
+        --bg2: #0f1525;
+        --navy-light: #162035;
+        --slate: #8892a4;
+        --slate-light: #a8b2c1;
+        --white: #e6edf5;
+        --accent: #00d4aa;
+        --accent2: #f7931a;
+        --accent-dim: rgba(0, 212, 170, 0.1);
+        --accent2-dim: rgba(247, 147, 26, 0.1);
+        --mono: "DM Mono", monospace;
+        --sans: "DM Sans", sans-serif;
+        --display: "Syne", sans-serif;
+        --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        --sidebar-w: 320px;
+      }
 
-    <!-- <div class="topnav">
-        <a class="active" href="index.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-    </div> -->
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Daniel White</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="resume.html">Resume</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="projects.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Projects
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-          </ul>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--slate-light);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* Noise texture overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 999;
+        opacity: 0.4;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      /* ── LAYOUT ───────────────────────────── */
+      #root {
+        display: flex;
+        min-height: 100vh;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        gap: 0;
+      }
+
+      /* ── SIDEBAR ──────────────────────────── */
+      aside {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: var(--sidebar-w);
+        min-width: var(--sidebar-w);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 80px 0 60px;
+      }
+
+      .intro h1 {
+        font-family: var(--display);
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+
+      .intro h2 {
+        font-family: var(--display);
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .intro p {
+        margin-top: 20px;
+        font-size: 0.92rem;
+        max-width: 260px;
+        color: var(--slate);
+        line-height: 1.75;
+      }
+
+      /* Nav */
+      nav {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 0;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--slate);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .nav-item::before {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 30px;
+        background: var(--slate);
+        transition: var(--transition);
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        color: var(--white);
+      }
+
+      .nav-item:hover::before,
+      .nav-item.active::before {
+        width: 60px;
+        background: var(--accent);
+      }
+
+      /* Social links */
+      .socials {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .social-link {
+        color: var(--slate);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+      }
+
+      .social-link:hover {
+        color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .social-link svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
+
+      /* ── MAIN ─────────────────────────────── */
+      main {
+        flex: 1;
+        padding: 80px 0 120px 80px;
+        max-width: 680px;
+      }
+
+      /* ── SECTIONS ─────────────────────────── */
+      section {
+        margin-bottom: 100px;
+        scroll-margin-top: 80px;
+      }
+
+      .section-label {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .section-heading {
+        font-family: var(--display);
+        font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.02em;
+        margin-bottom: 32px;
+      }
+
+      /* ── ABOUT ────────────────────────────── */
+      .about-text p {
+        margin-bottom: 18px;
+        font-size: 0.95rem;
+        color: var(--slate-light);
+      }
+
+      .about-text a {
+        color: var(--accent);
+        border-bottom: 1px solid transparent;
+      }
+
+      .about-text a:hover {
+        border-bottom-color: var(--accent);
+      }
+
+      .highlight {
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .highlight2 {
+        color: var(--accent2);
+        font-weight: 500;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .skill-item {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--slate-light);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .skill-item::before {
+        content: "▸";
+        color: var(--accent);
+        font-size: 0.85rem;
+      }
+
+      /* ── EXPERIENCE ───────────────────────── */
+      .exp-tabs {
+        display: flex;
+        gap: 0;
+        border-left: 2px solid var(--navy-light);
+        margin-bottom: 0;
+        flex-direction: column;
+      }
+
+      .exp-tab {
+        padding: 14px 24px;
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: var(--slate);
+        cursor: pointer;
+        border-left: 2px solid transparent;
+        margin-left: -2px;
+        transition: var(--transition);
+        background: transparent;
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .exp-tab:hover {
+        color: var(--accent);
+        background: var(--accent-dim);
+      }
+
+      .exp-tab.active {
+        color: var(--accent);
+        border-left-color: var(--accent);
+        background: var(--accent-dim);
+      }
+
+      .exp-layout {
+        display: flex;
+        gap: 0;
+      }
+
+      .exp-panel {
+        display: none;
+        padding: 0 0 0 32px;
+        flex: 1;
+      }
+
+      .exp-panel.active {
+        display: block;
+      }
+
+      .exp-panel h3 {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .exp-panel h3 span {
+        color: var(--accent);
+      }
+
+      .exp-panel .period {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: var(--slate);
+        margin: 8px 0 16px;
+        text-transform: uppercase;
+      }
+
+      .exp-panel ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .exp-panel ul li {
+        display: flex;
+        gap: 12px;
+        font-size: 0.9rem;
+        color: var(--slate-light);
+      }
+
+      .exp-panel ul li::before {
+        content: "▸";
+        color: var(--accent);
+        margin-top: 1px;
+        flex-shrink: 0;
+      }
+
+      /* ── PROJECTS ─────────────────────────── */
+      .projects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--navy-light);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 28px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, var(--accent-dim), transparent 60%);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 0, 10, 0.4);
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 18px;
+      }
+
+      .project-icon {
+        font-size: 2rem;
+        filter: drop-shadow(0 0 12px var(--accent));
+      }
+
+      .project-links {
+        display: flex;
+        gap: 14px;
+      }
+
+      .project-links a {
+        color: var(--slate);
+        transition: var(--transition);
+      }
+
+      .project-links a:hover {
+        color: var(--accent);
+      }
+
+      .project-links a svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .project-card h3 {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .project-card p {
+        font-size: 0.88rem;
+        color: var(--slate);
+        line-height: 1.7;
+        position: relative;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .tag {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        padding: 4px 10px;
+        border-radius: 3px;
+        background: var(--accent-dim);
+        color: var(--accent);
+      }
+
+      .tag.orange {
+        background: var(--accent2-dim);
+        color: var(--accent2);
+      }
+
+      /* ── EDUCATION ────────────────────────── */
+      .edu-card {
+        background: var(--navy-light);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 28px;
+        margin-bottom: 20px;
+        transition: var(--transition);
+      }
+
+      .edu-card:hover {
+        border-color: rgba(0, 212, 170, 0.3);
+      }
+
+      .edu-card .school {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--white);
+      }
+
+      .edu-card .degree {
+        color: var(--accent);
+        font-size: 0.88rem;
+        margin-top: 4px;
+      }
+
+      .edu-card .period {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--slate);
+        margin-top: 4px;
+        letter-spacing: 0.06em;
+      }
+
+      .edu-card .details {
+        margin-top: 12px;
+        font-size: 0.88rem;
+        color: var(--slate-light);
+      }
+
+      /* ── CONTACT ──────────────────────────── */
+      .contact-inner {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .contact-inner .section-label {
+        display: block;
+        text-align: center;
+      }
+
+      .contact-inner h2 {
+        font-family: var(--display);
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.03em;
+        margin-bottom: 20px;
+      }
+
+      .contact-inner p {
+        max-width: 460px;
+        margin: 0 auto 36px;
+        font-size: 0.92rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 16px 36px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        border-radius: 4px;
+        transition: var(--transition);
+      }
+
+      .btn:hover {
+        background: var(--accent-dim);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 212, 170, 0.15);
+      }
+
+      /* ── FOOTER ───────────────────────────── */
+      footer {
+        text-align: center;
+        padding: 20px 0 0;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--slate);
+      }
+
+      footer a {
+        color: var(--accent);
+      }
+
+      /* ── CURSOR DOT ───────────────────────── */
+      .cursor-dot {
+        pointer-events: none;
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 170, 0.06) 0%,
+          transparent 70%
+        );
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        transition: opacity 0.3s;
+      }
+
+      /* ── ANIMATIONS ───────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .fade-in-1 {
+        animation: fadeUp 0.6s ease forwards;
+      }
+      .fade-in-2 {
+        animation: fadeUp 0.6s 0.1s ease both;
+      }
+      .fade-in-3 {
+        animation: fadeUp 0.6s 0.2s ease both;
+      }
+      .fade-in-4 {
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+      .fade-in-5 {
+        animation: fadeUp 0.6s 0.4s ease both;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1em;
+        background: var(--accent);
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: blink 1s step-start infinite;
+      }
+
+      /* ── SCROLLBAR ────────────────────────── */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--navy-light);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+      }
+
+      /* ── RESPONSIVE ───────────────────────── */
+      @media (max-width: 900px) {
+        #root {
+          flex-direction: column;
+          padding: 0 20px;
+        }
+        aside {
+          position: static;
+          height: auto;
+          min-width: 0;
+          width: 100%;
+          padding: 60px 0 0;
+        }
+        nav {
+          display: none;
+        }
+        main {
+          padding: 40px 0 80px;
+          max-width: 100%;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style> -->
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <div id="root">
+      <!-- ── SIDEBAR ── -->
+      <aside>
+        <div>
+          <div class="intro fade-in-1">
+            <h1>Daniel<br />White</h1>
+            <h2>Software Developer</h2>
+            <p>
+              Building clean APIs, crafting iOS apps, and making sense of
+              markets — one commit at a time.
+            </p>
+          </div>
+
+          <nav class="fade-in-2">
+            <a class="nav-item active" href="#about" onclick="setActive(this)"
+              >About</a
+            >
+            <a class="nav-item" href="#experience" onclick="setActive(this)"
+              >Experience</a
+            >
+            <a class="nav-item" href="#projects" onclick="setActive(this)"
+              >Projects</a
+            >
+            <a class="nav-item" href="#education" onclick="setActive(this)"
+              >Education</a
+            >
+            <a class="nav-item" href="#contact" onclick="setActive(this)"
+              >Contact</a
+            >
+          </nav>
         </div>
-      </nav>
 
-      <script src="node_modules/jquery/dist/jquery.js"></script>
-      <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    
-</body>
+        <div class="socials fade-in-3">
+          <!-- GitHub -->
+          <a
+            class="social-link"
+            href="https://github.com/danielfwhite1"
+            target="_blank"
+            title="GitHub"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              />
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/in/danielfwhite/"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
+          </a>
+          <!-- Email -->
+          <a
+            class="social-link"
+            href="mailto:danielfwhite1@gmail.com"
+            title="Email"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.904.732-1.636 1.636-1.636H2.3l9.7 7.272 9.7-7.272h.664c.904 0 1.636.732 1.636 1.636z"
+              />
+            </svg>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ── MAIN ── -->
+      <main>
+        <!-- ABOUT -->
+        <section id="about">
+          <p class="section-label">01. Who I Am</p>
+          <h2 class="section-heading">About Me</h2>
+          <div class="about-text">
+            <p>
+              Hey! I'm Daniel, a
+              <span class="highlight">customer success engineer</span> and
+              aspiring software developer based in San Diego, CA. I'm passionate
+              about building things that sit at the intersection of
+              <span class="highlight">AI and technology</span>: clean REST APIs
+              that power real-world apps, iOS experiences that feel native and
+              fast, and tools that make markets a little more accessible.
+            </p>
+            <p>
+              I love the craft of software. There's something deeply satisfying
+              about turning a blank file into a working product. Whether it's
+              publishing a
+              <span class="highlight2">Finance app</span> on the App Store, a
+              <span class="highlight">Data Science project</span> using machine
+              learning methods, or building a slick web interface that just
+              works.
+            </p>
+            <p>
+              When I'm not writing code, I'm outdoors playing golf, beach
+              volleyball, snowboarding, or catching up with friends at happy
+              hour.
+            </p>
+            <p>Here are a few technologies I've been working with:</p>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-item">REST APIs</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">SQL</div>
+            <div class="skill-item">HTML / CSS</div>
+            <div class="skill-item">Git / GitHub</div>
+            <div class="skill-item">React</div>
+            <div class="skill-item">Node.js</div>
+            <div class="skill-item">Zapier / MESA</div>
+            <div class="skill-item">Asana / Jira</div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+          <p class="section-label">02. Where I've Worked</p>
+          <h2 class="section-heading">Experience</h2>
+          <div class="exp-layout">
+            <div class="exp-tabs" id="expTabs">
+              <button class="exp-tab active" onclick="showExp(this, 'exp0')">
+                CS Specialist II
+              </button>
+              <button class="exp-tab" onclick="showExp(this, 'exp1')">
+                ATAM
+              </button>
+              <button class="exp-tab" onclick="showExp(this, 'exp2')">
+                Software Dev Intern
+              </button>
+            </div>
+            <div style="flex: 1">
+              <div class="exp-panel active" id="exp0">
+                <h3>CS Specialist II <span>@ ShopPad</span></h3>
+                <p class="period">2022 — Present</p>
+                <ul>
+                  <li>
+                    Troubleshoot, diagnose, and resolve escalated technical
+                    issues for Shopify merchants, while maintaining +95%
+                    customer satisfaction ratings.
+                  </li>
+
+                  <li>
+                    Create and review GitHub pull requests for code fixes and
+                    feature enhancments, collaborating with the engineering team
+                    to deliver high-quality updates.
+                  </li>
+                  <li>
+                    Develop and implement standard operating procedures (SOPs)
+                    to identify and communicate recurring trends.
+                  </li>
+                </ul>
+              </div>
+              <div class="exp-panel" id="exp1">
+                <h3>Technical Account Manager <span>@ Yardi</span></h3>
+                <p class="period">Summer 2023</p>
+                <ul>
+                  <li>
+                    Led product implementation and client onboarding, guiding
+                    new customers through environment setup, configuration, and
+                    adoption.
+                  </li>
+                  <li>
+                    Delivered exceptional client support by troubleshooting and
+                    resolving technical, account, and product issues for
+                    investment clients.
+                  </li>
+                  <li>
+                    Tested and validated new software functionality, system
+                    enhancements, and data fixes.
+                  </li>
+                </ul>
+              </div>
+              <div class="exp-panel" id="exp2">
+                <h3>
+                  Investment Operations Intern
+                  <span>@ Pensionmark</span>
+                </h3>
+                <p class="period">2022 — 2023</p>
+                <ul>
+                  <li>
+                    Maintained and reconciled over 500 investment plans on the
+                    firm's platform, improving data integrity and accelerating
+                    quarterly client reporting.
+                  </li>
+                  <li>
+                    Partnered with the investment team to analyze and document
+                    funds under review, supporting portfolio and risk
+                    assessments.
+                  </li>
+                  <li>
+                    Generated ad hoc financial reports and fund performance
+                    comparisons to advisors and senior stakeholders.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+          <p class="section-label">03. What I've Built</p>
+          <h2 class="section-heading">Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-icon">📈</span>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/danielfwhite1"
+                    target="_blank"
+                    title="GitHub"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <h3>Market Pulse iOS App</h3>
+              <p>
+                A SwiftUI stock tracking app that consumes financial APIs to
+                display real-time quotes, portfolio performance, and market
+                news. Features push notifications for price alerts and a sleek
+                watchlist interface.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Swift</span>
+                <span class="tag">SwiftUI</span>
+                <span class="tag orange">REST API</span>
+                <span class="tag orange">Finance</span>
+                <span class="tag">Core Data</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-icon">🔌</span>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/danielfwhite1"
+                    target="_blank"
+                    title="GitHub"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <h3>Finance API Aggregator</h3>
+              <p>
+                A Python/Flask REST API that wraps multiple financial data
+                sources (Alpha Vantage, Yahoo Finance) into a unified endpoint
+                schema. Built with rate-limiting, caching, and detailed Swagger
+                documentation.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag orange">REST API</span>
+                <span class="tag">Redis</span>
+                <span class="tag orange">Finance</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-icon">🎓</span>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/danielfwhite1"
+                    target="_blank"
+                    title="GitHub"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <h3>Campus Event iOS App</h3>
+              <p>
+                A native iOS app to help students discover and RSVP for campus
+                events. Integrates a Node.js backend API with real-time updates
+                via WebSockets, geolocation filtering, and push notification
+                support.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Swift</span>
+                <span class="tag">SwiftUI</span>
+                <span class="tag">Node.js</span>
+                <span class="tag orange">WebSockets</span>
+                <span class="tag">MapKit</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+          <p class="section-label">04. Where I Studied</p>
+          <h2 class="section-heading">Education</h2>
+
+          <div class="edu-card">
+            <div class="school">University of California, Santa Barbara</div>
+            <div class="degree">B.S. Data Science</div>
+            <div class="period">2018 - 2020</div>
+            <div class="details">
+              Relevant coursework: Machine Learning, Data Structures &
+              Algorithms, Probability & Statistics, Regression Analysis,
+              Differential Equations, Big Data Analytics, Statistical Data
+              Science
+              <br /><br />
+              Active member of the Data Science club.
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="school">Promineo Tech</div>
+            <div class="degree">Front End Software Development Program</div>
+            <div class="period">2020</div>
+          </div>
+          <div class="edu-card">
+            <div class="school">Santa Barbara City College</div>
+            <div class="degree">A.A. Economics</div>
+            <div class="period">2018</div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <div class="contact-inner">
+            <span class="section-label">05. What's Next</span>
+            <h2>Let's Build Something.</h2>
+            <p>
+              I'm actively looking for software engineering opportunities.
+              Whether that's full-time or interesting freelance work in iOS,
+              APIs, or fintech. My inbox is always open.
+            </p>
+            <a class="btn" href="mailto:danielfwhite1@gmail.com">Say Hello →</a>
+          </div>
+        </section>
+
+        <footer>
+          <p>
+            Designed & Built by
+            <a href="https://github.com/danielfwhite1">Daniel White</a>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // Cursor glow effect
+      const dot = document.getElementById("cursorDot");
+      document.addEventListener("mousemove", (e) => {
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+      });
+
+      // Experience tabs
+      function showExp(btn, id) {
+        document
+          .querySelectorAll(".exp-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".exp-panel")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(id).classList.add("active");
+      }
+
+      // Nav active state on scroll
+      function setActive(el) {
+        document
+          .querySelectorAll(".nav-item")
+          .forEach((n) => n.classList.remove("active"));
+        el.classList.add("active");
+      }
+
+      const sections = document.querySelectorAll("section");
+      const navItems = document.querySelectorAll(".nav-item");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navItems.forEach((n) => {
+                n.classList.toggle(
+                  "active",
+                  n.getAttribute("href") === "#" + id,
+                );
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      sections.forEach((s) => observer.observe(s));
+
+      // Typewriter effect for subtitle
+      const subtitle = document.querySelector(".intro h2");
+      const roles = [
+        "Software Engineer",
+        "iOS App Developer",
+        "API Architect",
+        "Fintech Enthusiast",
+      ];
+      let ri = 0,
+        ci = 0,
+        deleting = false;
+      function type() {
+        const current = roles[ri];
+        if (!deleting) {
+          subtitle.textContent = current.slice(0, ci++);
+          if (ci > current.length) {
+            deleting = true;
+            setTimeout(type, 1800);
+            return;
+          }
+        } else {
+          subtitle.textContent = current.slice(0, ci--);
+          if (ci < 0) {
+            deleting = false;
+            ri = (ri + 1) % roles.length;
+            ci = 0;
+          }
+        }
+        setTimeout(type, deleting ? 50 : 100);
+      }
+      setTimeout(type, 1200);
+    </script>
+  </body>
 </html>

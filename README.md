@@ -1,85 +1,55 @@
-# Daniel White — Portfolio Site
+# Daniel White — Personal Portfolio
 
-[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-0a192f?style=flat&logo=github)](https://danielfwhite1.github.io/)
+Welcome! This repository contains the source for my GitHub Pages portfolio site:
 
-Personal portfolio website built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies, just clean code.
+🔗 https://danielfwhite1.github.io/
 
-🔗 **Live Site:** [danielfwhite1.github.io](https://danielfwhite1.github.io/)
+It showcases who I am as a **software developer**, what I’ve built, and how to contact me.
 
----
+## 🧠 About the Site
 
-## About
+This is a static portfolio hosted with GitHub Pages, built using modern HTML, CSS, and JavaScript. It highlights:
 
-A single-page portfolio showcasing my work as a Customer Success Engineer and aspiring Software Developer based in San Diego, CA. It covers who I am, where I've worked, projects I've built, and how to reach me.
+- About Me
+- Professional Experience
+- Featured Projects
+- Education
+- Contact links
 
----
+The site is designed to be clean, responsive, and easy for recruiters or collaborators to explore my work and background.
 
-## Features
+## 👨‍💻 What You’ll Find Here
 
-- Fully responsive design (mobile + desktop)
-- Sticky sidebar navigation with active section highlighting
-- Smooth scroll-based animations
-- Tabbed experience section
-- Cursor glow effect
-- Typewriter intro animation
-- Zero external dependencies
+### 🏡 Home & About
+My personal introduction and key professional tagline.
 
----
+### 💼 Experience  
+A timeline of roles and skills I’ve gained in engineering and tech support.
 
-## Tech Stack
+### ⚙️ Projects  
+Highlights of software I’ve built — including apps, APIs, and tools.
 
-Built with pure vanilla web tech — no React, no build tools, no frameworks:
+### 🎓 Education  
+Academic background and relevant courses.
 
-- **HTML5** — semantic, accessible markup
-- **CSS3** — custom properties, flexbox, grid, animations
-- **JavaScript** — scroll detection, tab switching, typewriter effect
+### 📬 Contact  
+Links to connect on GitHub, LinkedIn, and email.
 
----
+## 🚀 Technologies & Tools Used
 
-## Project Structure
+This portfolio was built with:
 
-```
-/
-├── index.html       # Everything lives here — HTML, embedded CSS, and JS
-└── README.md        # You're reading it
-```
+- HTML5
+- CSS3
+- JavaScript
+- Git & GitHub Pages for deployment
 
----
+All site content is static and hosted via GitHub Pages with no backend required.
 
-## Running Locally
+## 📦 How to View Locally
 
-No install needed. Just clone and open:
+To preview the site on your machine:
 
-```bash
-git clone https://github.com/danielfwhite1/danielfwhite1.github.io.git
-cd danielfwhite1.github.io
-open index.html
-```
-
-Or drag `index.html` into any browser.
-
----
-
-## Color Palette
-
-| Role       | Hex       |
-| ---------- | --------- |
-| Background | `#0a192f` |
-| Primary    | `#64ffda` |
-| Accent     | `#f7931a` |
-| Text Light | `#ccd6f6` |
-| Text Dim   | `#8892b0` |
-
----
-
-## Contact
-
-Have an opportunity or just want to say hi?
-
-📬 [danielfwhite1@gmail.com](mailto:danielfwhite1@gmail.com)  
-💼 [linkedin.com/in/danielfwhite](https://linkedin.com/in/danielfwhite)  
-🐙 [github.com/danielfwhite1](https://github.com/danielfwhite1)
-
----
-
-_Designed & built by Daniel White_
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/danielfwhite1/danielfwhite1.github.io.git
